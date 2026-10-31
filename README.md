@@ -24,14 +24,21 @@ resources on weapons to stop them before every lane is destroyed.
 
 ### Titans and weapons
 
-| Titans          | Weapons               |
-|-----------------|-----------------------|
-| Pure Titan      | Piercing Cannon       |
-| Abnormal Titan  | Sniper Cannon         |
-| Armored Titan   | Volley Spread Cannon  |
-| Colossal Titan  | Wall Trap             |
+| Code | Titan |
+|------|-------|
+| 1 | Pure Titan |
+| 2 | Abnormal Titan |
+| 3 | Armored Titan |
+| 4 | Colossal Titan |
 
-Their stats live in `titans.csv` and `weapons.csv`, so the game can be rebalanced
+| Code | Weapon class | In-game name | Price | Damage |
+|------|--------------|--------------|------:|-------:|
+| 1 | Piercing Cannon | Anti Titan Shell | 25 | 10 |
+| 2 | Sniper Cannon | Long Range Spear | 25 | 35 |
+| 3 | Volley Spread Cannon | Wall Spread Cannon | 100 | 5 (range 20-50) |
+| 4 | Wall Trap | Proximity Trap | 75 | 100 |
+
+All of these numbers live in `titans.csv` and `weapons.csv`, so the game can be rebalanced
 without touching the code.
 
 ## Project structure
@@ -169,3 +176,24 @@ java --module-path "$PATH_TO_FX" --add-modules javafx.controls,javafx.fxml \
 ~~~
 
 Or import the folder into Eclipse / IntelliJ, add JavaFX to the project, and run `game.gui.Main`.
+
+## Tests
+
+`ci/EngineSmokeTest.java` checks the game engine headlessly (no JavaFX needed): easy and hard
+mode setup, CSV loading, buying a weapon, the insufficient-resources and invalid-lane errors,
+the phase change at turn 15, and that an undefended battle ends. Run it from the repo root:
+
+~~~bash
+javac -d out $(find src/game/engine -name "*.java") ci/EngineSmokeTest.java
+java -cp out EngineSmokeTest
+~~~
+
+GitHub Actions runs it on every push. Writing it exposed a bug that is now fixed: when the last
+lane was destroyed during a turn, `Battle.performTurn` tried to spawn titans into a lane that no
+longer existed and threw a `NullPointerException`. The GUI itself is not covered by the tests.
+
+## License
+
+The code is released under the [MIT License](LICENSE). *Attack on Titan* and its characters belong
+to their respective owners; this is a non-commercial course project, and the images in
+`src/game/gui/resources/images` are not covered by the MIT license.
