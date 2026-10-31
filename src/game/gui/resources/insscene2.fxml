@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.gui.Controller">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../attack.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchTodiffscene" text="Back" />
+      <Button layoutX="259.0" layoutY="302.0" mnemonicParsing="false" onAction="#switchTohardgamescene" prefHeight="25.0" prefWidth="82.0" text="Next" />
+      <Label layoutX="111.0" layoutY="129.0" prefHeight="142.0" prefWidth="427.0" text="Without the instructions for your favorite board games, it's hard to know how to get from point A to point B. Whether it's how much money each player gets at the start of a game of Monopoly or how to get your pieces out of start during a game of Sorry, you need the instructions for clarification." textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="379.0" fitWidth="387.0" layoutX="111.0" layoutY="-129.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Downloads/11-01-removebg-preview.png" />
+         </image>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="379.0" fitWidth="387.0" layoutX="111.0" layoutY="-116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Downloads/11-01-removebg-preview.png" />
+         </image>
+         <effect>
+            <Shadow>
+               <color>
+                  <Color red="1.0" />
+               </color>
+            </Shadow>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="76.0" layoutX="522.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Downloads/6-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
