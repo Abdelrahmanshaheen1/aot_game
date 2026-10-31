@@ -206,6 +206,11 @@ public class Battle
 	{
 		Lane leastDangerLane = this.getLanes().poll();
 
+		if (leastDangerLane == null) // the last lane was destroyed earlier in this turn
+		{
+			return;
+		}
+
 		for (int i = 0; i < this.getNumberOfTitansPerTurn(); i++)
 		{
 			if (this.getApproachingTitans().isEmpty())

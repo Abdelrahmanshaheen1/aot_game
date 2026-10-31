@@ -1,0 +1,19 @@
+name: Engine tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Compile the engine (no JavaFX needed) and the smoke test
+        run: javac -d out $(find src/game/engine -name "*.java") ci/EngineSmokeTest.java
+      - name: Run the smoke test
+        run: java -cp out EngineSmokeTest
